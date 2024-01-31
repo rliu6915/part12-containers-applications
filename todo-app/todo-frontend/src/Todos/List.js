@@ -11,7 +11,7 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
 
   return (
     <>
-      {todos.map(todo => {
+      {todos.map((todo, index) => {
         const doneInfo = (
           <>
             <span>This todo is done</span>
@@ -34,14 +34,14 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
         )
 
         return (
-          <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
-            <span>
+          <div key={index} style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
+            <span key={todo.text} >
               {todo.text} 
             </span>
             {todo.done ? doneInfo : notDoneInfo}
           </div>
         )
-      }).reduce((acc, cur) => [...acc, <hr />, cur], [])}
+      }).reduce((acc, cur, index) => [...acc, <hr key={index + 'hr'}/>, cur], [])}
     </>
   )
 }
