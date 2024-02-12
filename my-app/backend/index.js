@@ -4,7 +4,7 @@ const cors = require('cors')
 
 app.use(express.json())
 app.use(cors())
-app.use(express.static('dist'))
+// app.use(express.static('dist'))
 
 app.post('/api/calShippingFees', (request, response) => {
   const parcels = request.body.parcels
